@@ -18,3 +18,9 @@ C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\refint\WPF.dll
 C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\WPF.pdb
 C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\WPF.genruntimeconfig.cache
 C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\ref\WPF.dll
+C:\Users\andrz\source\repos\WPF\WPF\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\WPF.csproj.AssemblyReference.cache
+C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\LoginWindow.g.cs
+C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\LoginWindow.baml
+C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\WPF.sourcelink.json
+C:\Users\andrz\source\repos\WPF\WPF\obj\Debug\net8.0-windows\WPF.csproj.Up2Date
