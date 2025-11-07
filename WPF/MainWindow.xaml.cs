@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WPF
 {
@@ -31,7 +35,25 @@ namespace WPF
             InitializeComponent();
             _user = user;
 
-            UserTestText.Text = $"Username: {_user.Username},  Email: {_user.Email}";
+            UserTestText.Text = $"Zalogowany jako: {_user.Username} ({_user.Email})";
+            InitializeAsync();
+        }
+
+        async void InitializeAsync()
+        {
+            await MyWebView.EnsureCoreWebView2Async();
+            MyWebView.CoreWebView2.Navigate("https://gpslocation.fcomms.website/index.php");
         }
     }
 }
+
+
+
+
+// Rozwiązania mapki
+
+
+// > 1 OsmSharp library
+// > 3 JS Iframe
+
+// X -2-devExpress-library- 

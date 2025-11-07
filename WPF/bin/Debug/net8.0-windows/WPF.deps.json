@@ -8,10 +8,33 @@
     ".NETCoreApp,Version=v8.0": {
       "WPF/1.0.0": {
         "dependencies": {
-          "Newtonsoft.Json": "13.0.4"
+          "Microsoft.Web.WebView2": "1.0.3595.46",
+          "Newtonsoft.Json": "13.0.4",
+          "Microsoft.Web.WebView2.Core": "1.0.3595.46",
+          "Microsoft.Web.WebView2.WinForms": "1.0.3595.46",
+          "Microsoft.Web.WebView2.Wpf": "1.0.3595.46"
         },
         "runtime": {
           "WPF.dll": {}
+        }
+      },
+      "Microsoft.Web.WebView2/1.0.3595.46": {
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/WebView2Loader.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "1.0.3595.46"
+          },
+          "runtimes/win-x64/native/WebView2Loader.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.3595.46"
+          },
+          "runtimes/win-x86/native/WebView2Loader.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.3595.46"
+          }
         }
       },
       "Newtonsoft.Json/13.0.4": {
@@ -19,6 +42,30 @@
           "lib/net6.0/Newtonsoft.Json.dll": {
             "assemblyVersion": "13.0.0.0",
             "fileVersion": "13.0.4.30916"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2.Core/1.0.3595.46": {
+        "runtime": {
+          "Microsoft.Web.WebView2.Core.dll": {
+            "assemblyVersion": "1.0.3595.46",
+            "fileVersion": "1.0.3595.46"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2.WinForms/1.0.3595.46": {
+        "runtime": {
+          "Microsoft.Web.WebView2.WinForms.dll": {
+            "assemblyVersion": "1.0.3595.46",
+            "fileVersion": "1.0.3595.46"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2.Wpf/1.0.3595.46": {
+        "runtime": {
+          "Microsoft.Web.WebView2.Wpf.dll": {
+            "assemblyVersion": "1.0.3595.46",
+            "fileVersion": "1.0.3595.46"
           }
         }
       }
@@ -30,12 +77,34 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.Web.WebView2/1.0.3595.46": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j+yzqAKwC8Zn+3FL5XJxm6N0Rh5iDqTANBfFaYvnjyRpbpqt3qkpFcqMWLjqEBGiWEClh3zLCkJINwRUcr1KxQ==",
+      "path": "microsoft.web.webview2/1.0.3595.46",
+      "hashPath": "microsoft.web.webview2.1.0.3595.46.nupkg.sha512"
+    },
     "Newtonsoft.Json/13.0.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A==",
       "path": "newtonsoft.json/13.0.4",
       "hashPath": "newtonsoft.json.13.0.4.nupkg.sha512"
+    },
+    "Microsoft.Web.WebView2.Core/1.0.3595.46": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Web.WebView2.WinForms/1.0.3595.46": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Web.WebView2.Wpf/1.0.3595.46": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

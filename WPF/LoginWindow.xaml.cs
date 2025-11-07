@@ -52,7 +52,7 @@ namespace WPF
 
         private async Task<User?> TryLoginAsync(string email, string password)
         {
-            string url = "https://gpslocation.fcomms.website/desktopApi.php"; 
+            string url = "https://gpslocation.fcomms.website/api/login.php"; 
 
             var data = new
             {

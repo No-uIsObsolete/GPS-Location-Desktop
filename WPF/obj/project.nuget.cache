@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TClIZMDVa48=",
+  "dgSpecHash": "Uau6u6voTkE=",
   "success": true,
   "projectFilePath": "C:\\Users\\andrz\\source\\repos\\WPF\\WPF\\WPF.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\andrz\\.nuget\\packages\\microsoft.web.webview2\\1.0.3595.46\\microsoft.web.webview2.1.0.3595.46.nupkg.sha512",
     "C:\\Users\\andrz\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
   ],
   "logs": []
