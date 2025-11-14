@@ -16,12 +16,59 @@ namespace WPF
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
+    /// 
+
     public partial class LoginWindow : Window
     {
         private readonly HttpClient _client = new HttpClient();
         public LoginWindow()
         {
             InitializeComponent();
+            AutoLoginIfPossible();
+        }
+        private async void AutoLoginIfPossible()
+        {
+            string session = Properties.Settings.Default.AutoSessionID;
+
+            if (!string.IsNullOrEmpty(session))
+            {
+                // spróbuj wejść na stronę, żeby sprawdzić czy sesja żyje
+                bool valid = await ValidateSession(session);
+
+                if (valid)
+                {
+                    var main = new MainWindow(null!, session);
+                    main.Show();
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    // sesja wygasła — czyścić i pokazać okno logowania
+                    Properties.Settings.Default.AutoSessionID = "";
+                    Properties.Settings.Default.Save();
+                }
+            }
+
+            // jeśli są zapisane email+hasło → spróbuj automatycznego logowania
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.AutoEmail) &&
+                !string.IsNullOrEmpty(Properties.Settings.Default.AutoPassword))
+            {
+                var loginResult = await TryLoginAsync(
+                    Properties.Settings.Default.AutoEmail,
+                    Properties.Settings.Default.AutoPassword
+                );
+
+                if (loginResult != null)
+                {
+                    Properties.Settings.Default.AutoSessionID = loginResult.SessionID;
+                    Properties.Settings.Default.Save();
+
+                    var main = new MainWindow(loginResult.User, loginResult.SessionID);
+                    main.Show();
+                    this.Close();
+                }
+            }
         }
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -35,12 +82,11 @@ namespace WPF
                 return;
             }
 
+            var loginResult = await TryLoginAsync(email, password);
 
-            var user = await TryLoginAsync(email, password);
-
-            if (user != null)
+            if (loginResult != null)
             {
-                var main = new MainWindow(user);
+                var main = new MainWindow(loginResult.User, loginResult.SessionID);
                 main.Show();
                 this.Close();
             }
@@ -50,9 +96,9 @@ namespace WPF
             }
         }
 
-        private async Task<User?> TryLoginAsync(string email, string password)
+        private async Task<LoginResult?> TryLoginAsync(string email, string password)
         {
-            string url = "https://gpslocation.fcomms.website/api/login.php"; 
+            string url = "https://gpslocation.fcomms.website/api/loginWPF.php";
 
             var data = new
             {
@@ -68,11 +114,8 @@ namespace WPF
                 var response = await _client.PostAsync(url, content);
                 string result = await response.Content.ReadAsStringAsync();
 
-                //MessageBox.Show(result);
-
                 if (!response.IsSuccessStatusCode)
                 {
-                    //MessageBox.Show($"Server returned HTTP {(int)response.StatusCode}: {response.ReasonPhrase}");
                     return null;
                 }
 
@@ -80,16 +123,20 @@ namespace WPF
 
                 if (jsonResponse.success == true)
                 {
-                    return new User
+                    return new LoginResult
                     {
-                        Username = jsonResponse.user.username,
-                        Email = jsonResponse.user.email
+                        User = new User
+                        {
+                            Username = jsonResponse.user.username,
+                            Email = jsonResponse.user.email
+                        },
+                        SessionID = jsonResponse.sessionID
                     };
                 }
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Connection error: " + ex.Message);
+                // Możesz dodać logowanie błędu lub komunikat
             }
 
             return null;
@@ -99,5 +146,10 @@ namespace WPF
     {
         public string Username { get; set; }
         public string Email { get; set; }
+    }
+    public class LoginResult
+    {
+        public User User { get; set; }
+        public string SessionID { get; set; }
     }
 }

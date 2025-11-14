@@ -6,9 +6,12 @@
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="GPS Location" Height="550" Width="900">
+        Title="GPS Location" Height="560" Width="954">
     <DockPanel LastChildFill="True">
-        <Border DockPanel.Dock="Top" Background="#333" Height="58">
+        <Border Background="#FF332B2B" Width="100">
+            <Button x:Name="LogoutButton" Content="Logout" Click="LogoutButton_Click" Margin="10,482,10,10"/>
+        </Border>
+        <Border DockPanel.Dock="Top" Background="#FF332B2B" Height="58">
             <TextBlock x:Name="UserTestText"
                        Text=""
                        VerticalAlignment="Center"
